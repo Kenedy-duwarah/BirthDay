@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blank Page</title>
+    <style>
+        /* Reset some default browser styles */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: #fff;
+            text-align: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 400px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        #thankyouImage {
+            display: none;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+        
+        .character {
+            animation: float 2s infinite;
+            width: 100%;
+            max-width: 100px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .character {
+                width: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Gift Chahiye 🎁🤗?</h1>
+        <p>Please choose an option ⬇️</p>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+        <img id="thankyouImage" src="as-you-wish-mr-strickler.gif" alt="Thank You">
+
+    </div>
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const thankyouImage = document.getElementById('thankyouImage');
+
+        yesButton.addEventListener('click', function() {
+            yesButton.disabled = true;
+            yesButton.style.position = 'absolute';
+            document.body.addEventListener('mousemove', moveButton);
+        });
+
+        noButton.addEventListener('click', function() {
+            thankyouImage.style.display = 'block';
+            yesButton.style.display = 'none';
+            noButton.style.display = 'none';
+        });
+
+        function moveButton(event) {
+            const x = event.clientX;
+            const y = event.clientY;
+            yesButton.style.left = x + 'px';
+            yesButton.style.top = y + 'px';
+        }
+    </script>
+</body>
+
+</html>
